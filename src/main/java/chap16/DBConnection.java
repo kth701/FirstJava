@@ -17,7 +17,7 @@ public class DBConnection {
 			conn = DriverManager.getConnection(
 					"jdbc:mariadb://localhost:3306/mydb", // Host
 					"java", // 계정
-					"1234nkjl"  // 패스워드
+					"1234"  // 패스워드
 					);
 			
 			if (conn != null) {
