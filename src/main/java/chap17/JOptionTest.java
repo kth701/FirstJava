@@ -78,7 +78,6 @@ public class JOptionTest extends JFrame implements ActionListener {
 					str,
 					str[0]
 					);	
-			
 		}
 		
 	}
