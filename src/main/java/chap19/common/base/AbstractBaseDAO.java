@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+// AbstractBaseDAO a = new AbstractBaseDAO() : 인스턴스을 생성하지 않게 설계
+
 public abstract class AbstractBaseDAO {
 	protected static final String driver = "org.mariadb.jdbc.Driver";
 	protected static final String url = "jdbc:mariadb://localhost:3306/rentcar";
@@ -20,7 +22,7 @@ public abstract class AbstractBaseDAO {
 			connDB();
 		}
 	}
-	
+
 	// db 드라이브 로딩
 	public void connDB() {
 		try {
