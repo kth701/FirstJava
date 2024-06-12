@@ -1,12 +1,17 @@
 package chap18;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.List;
+
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import chap18.contoller.MovieController;
@@ -17,7 +22,7 @@ public class MovieWindowView extends JFrame implements ActionListener {
 	JTextField tMovieTitle;
 	JButton btnTitleInsert, btnSave, btnExit;
 	List movieList;
-	
+
 	MovieController controller;
 	
 	public MovieWindowView() {
@@ -31,6 +36,7 @@ public class MovieWindowView extends JFrame implements ActionListener {
 		btnSave = new JButton("영화제목 파일 저장");
 		
 		movieList = new List();
+
 		btnExit = new JButton("종료");
 		
 		// 컴포넌트 설정
@@ -78,11 +84,30 @@ public class MovieWindowView extends JFrame implements ActionListener {
 			
 			System.out.println("이벤트 발생:"+mTitle);
 			if (e.getSource() == btnTitleInsert) {
-				controller.addTitle();
+				resultMsg = "영화제목을 추가했습니다.";
+				//System.out.println("영화제목 추가하기");
+				
+				// 텍스트에 입력한 영화제목 읽기
+				mTitle = tMovieTitle.getText().trim();
+				
+				// controller에 추가요청(입력한 영화제목, 현재 영화제목 List)
+				controller.addTitle(mTitle, movieList);
+				tMovieTitle.setText("");
+				
 			} else if (e.getSource() == btnSave) {
-				controller.saveTitles();
+				resultMsg = "영화제목을 파일에 저장했습니다.";
+				//System.out.println("영화제목을 파일에  저장");
+				controller.saveTitles(movieList);
 			} else {
-				controller.delTitles();
+				resultMsg = "영화제목을 삭제했습니다.";
+				controller.delTitles(mTitle, movieList);
+			}
+			
+			// 다이얼로그 박스 : 메시지
+			JOptionPane.showMessageDialog(this, resultMsg, "메시지 박스", JOptionPane.INFORMATION_MESSAGE);
+			
+			if (e.getSource() == btnExit) {
+				System.exit(1);// 정상 종료 (0): 비정상 종료
 			}
 			
 		} catch (Exception e2) {
@@ -92,3 +117,16 @@ public class MovieWindowView extends JFrame implements ActionListener {
 	}
 
 }
+
+/*
+ * Button : ActionEvent(클릭), FocusEvent, Key....
+ * Checkbox: ItemEvent(체크박스,리스트항목 선택),..
+ * Frame: WindowEnvent,...
+ * List: ActionEvent,ItemEvent,...
+ * Label: FocusEvent,...
+ * Choice : ItemEvent,...
+ * Adjustable: AdjustmentEvent
+ * 
+ */
+
+
