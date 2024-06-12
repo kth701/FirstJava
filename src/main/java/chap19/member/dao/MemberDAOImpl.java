@@ -1,6 +1,5 @@
 package chap19.member.dao;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,9 +13,21 @@ public class MemberDAOImpl extends AbstractBaseDAO implements MemberDAO{
 		
 		List<MemberVO> memList = new ArrayList<MemberVO>();
 		
-		String sql = "select * from t_member";
-		pstmt = conn.prepareStatement(sql);
+		String _memName = memberVO.getMemName();
+		String sql = "";
 		
+		if ( _memName != null && _memName.length() != 0) {
+			sql = "SELECT * FROM t_member WHERE memName = ? ORDER BY memId";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, _memName);
+			
+		} else {
+			sql = "select * from t_member";
+			
+			pstmt = conn.prepareStatement(sql);
+		}
+
 		rs = pstmt.executeQuery();
 		
 		while(rs.next()) {
