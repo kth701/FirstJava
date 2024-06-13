@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Optional;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -65,12 +66,28 @@ public class RegMemDialog extends JDialog{
 				MemberVO vo = new MemberVO(id, password, name, address, phoneNum);
 				System.out.println("memberVO:"+vo);
 				
-				// 회원정보 db등록 요청
-				int result = memberController.regMember(vo);
-				if (result > 0) {
-					showMessage("새 회원을 등록했습니다.",result);
-				} else {
-					showMessage("회원 등록 실패", result);
+				// ID중복체크: 객체에 널(null) 허용하는 타입
+
+				Optional<MemberVO> checkIdVO =  Optional.ofNullable(memberController.checkId(id));
+				System.out.println("check id: "+checkIdVO.get().getMemId());
+				
+				if (checkIdVO.get().getMemId() != null) { // id가 중복 체크 아니면
+					showMessage(checkIdVO.get().getMemId()+" 사용중인 아이디입니다.", -1);
+					
+				} else  { // id가 중복일 경우
+					// 회원정보 db등록 요청
+					int result = memberController.regMember(vo);
+					if (result > 0) {
+						showMessage("새 회원을 등록했습니다.",result);
+						
+						tfId.setText("");
+						tfPassword.setText("");
+						tfName.setText("");
+						tfAddress.setText("");
+						tfPhoneNum.setText("");
+					} else {
+						showMessage("회원 등록 실패", result);
+					}					
 				}
 				
 			}// end actionPerformed()

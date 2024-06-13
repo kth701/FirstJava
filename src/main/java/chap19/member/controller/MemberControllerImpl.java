@@ -61,4 +61,15 @@ public class MemberControllerImpl implements MemberController {
 		return result;
 	}
 
+	@Override
+	public MemberVO checkId(String memId) {
+		MemberVO vo = new MemberVO();
+		
+		try {
+			vo = memberDAO.checkId(memId);
+			
+		} catch (Exception e) { System.out.println(e.getMessage());	}
+		return vo;
+	}
+
 }

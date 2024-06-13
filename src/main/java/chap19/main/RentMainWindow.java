@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 
 import chap19.common.base.AbstractBaseWindow;
 import chap19.member.controller.MemberController;
+import chap19.member.controller.MemberControllerImpl;
 import chap19.member.window.RegMemDialog;
 
 public class RentMainWindow extends AbstractBaseWindow { // JFram기능을 가진 추상클래스 상속받기
@@ -54,6 +55,8 @@ public class RentMainWindow extends AbstractBaseWindow { // JFram기능을 가�
 		memberMenu = new JMenu("회원 관리");
 		resMenu = new JMenu("예약 관리");
 		helpMenu = new JMenu("도움말");
+		
+		memberController = new MemberControllerImpl();
 	}
 	
 	// 서브메뉴 생성 메서드
@@ -113,6 +116,18 @@ public class RentMainWindow extends AbstractBaseWindow { // JFram기능을 가�
 		setSize(800,600);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+		// 메뉴항목 이벤트 리스너 등록
+		memMenu21.addActionListener(new MemberHandler());
+//		memMenu22.addActionListener(new MemberHandler());
+//		memMenu23.addActionListener(new MemberHandler());
+//		memMenu24.addActionListener(new MemberHandler());
+		
+//		carMenu11.addActionListener(new CarHandler());
+		
+//		resMenu31.addActionListener(new ResHandler());
+		
+//		helpMenu.addActionListener(new HelpHandler());
 			
 		
 	}
