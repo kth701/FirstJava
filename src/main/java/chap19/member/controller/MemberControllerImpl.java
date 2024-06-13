@@ -28,21 +28,36 @@ public class MemberControllerImpl implements MemberController {
 	}
 
 	@Override
-	public void regMember(MemberVO memberVO) {
-		// TODO Auto-generated method stub
+	public int regMember(MemberVO memberVO) {
+		//회원 정보 등록 하는 dao 호출
+		int result = 0;
+		try {
+			result = memberDAO.insertMember(memberVO);
+		} catch (Exception e) { System.out.println(e.getMessage());	}
 		
+		return result;
 	}
 
 	@Override
-	public void modMember(MemberVO memberVO) {
-		// TODO Auto-generated method stub
+	public int modMember(MemberVO memberVO) {
+		int result = 0;
+		//회원 정보 수정 하는 dao 호출
+		try {
+			result = memberDAO.updateMember(memberVO);
+		} catch (Exception e) { System.out.println(e.getMessage());	}
 		
+		return result;
 	}
 
 	@Override
-	public void removeMember(MemberVO memberVO) {
-		// TODO Auto-generated method stub
+	public int removeMember(MemberVO memberVO) {
+		int result = 0;
 		
+		try {
+			result = memberDAO.deleteMember(memberVO);
+		} catch (Exception e) { System.out.println(e.getMessage());	}
+		
+		return result;
 	}
 
 }
