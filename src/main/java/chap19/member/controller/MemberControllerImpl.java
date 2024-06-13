@@ -29,6 +29,7 @@ public class MemberControllerImpl implements MemberController {
 
 	@Override
 	public int regMember(MemberVO memberVO) {
+		System.out.println("regMember():"+memberVO);
 		//회원 정보 등록 하는 dao 호출
 		int result = 0;
 		try {

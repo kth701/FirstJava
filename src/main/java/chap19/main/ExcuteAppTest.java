@@ -7,13 +7,17 @@ import java.util.Scanner;
 import chap19.member.controller.MemberController;
 import chap19.member.controller.MemberControllerImpl;
 import chap19.member.vo.MemberVO;
+import chap19.member.window.RegMemDialog;
 
 public class ExcuteAppTest {
 
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
 		
 		MemberControllerImpl controller = new MemberControllerImpl();
+		/*
+		Scanner sc = new Scanner(System.in);
+		
+		
 		List<MemberVO> listMembers = new ArrayList<MemberVO>();
 		
 		System.out.print("이름: ");
@@ -34,17 +38,17 @@ public class ExcuteAppTest {
 		});
 		
 		// 회원 정보 입력
-//		System.out.println("-- 회원 정보 입력");
-//		MemberVO insertVO = new MemberVO("HONG100", "1234", "홍길동", "서울", "010-1234-4444");
-//		
-//		int result = controller.regMember(insertVO);
-//		
-//		System.out.println("result: "+result);
-//		if (result > 0) {
-//			System.out.println("회원 정보 등록 완료");
-//		} else {
-//			System.out.println("회원 정보 등록 실패");
-//		}
+		System.out.println("-- 회원 정보 입력");
+		MemberVO insertVO = new MemberVO("HONG100", "1234", "홍길동", "서울", "010-1234-4444");
+		
+		int result = controller.regMember(insertVO);
+		
+		System.out.println("result: "+result);
+		if (result > 0) {
+			System.out.println("회원 정보 등록 완료");
+		} else {
+			System.out.println("회원 정보 등록 실패");
+		}
 		
 		// 회원 정보 수정
 		System.out.println("-- 회원 정보 수정");
@@ -75,7 +79,9 @@ public class ExcuteAppTest {
 		} else {
 			System.out.println("회원 정보 삭제 실패");
 		}		
+		*/
 		
+		new RegMemDialog(controller, "회원 등록");
 		
 
 	}
