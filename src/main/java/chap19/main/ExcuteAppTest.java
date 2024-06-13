@@ -81,6 +81,7 @@ public class ExcuteAppTest {
 		}		
 		*/
 		
+
 		new RegMemDialog(controller, "회원 등록");
 		
 
