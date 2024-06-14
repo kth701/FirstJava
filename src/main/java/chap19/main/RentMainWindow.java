@@ -18,6 +18,7 @@ import chap19.common.base.AbstractBaseWindow;
 import chap19.member.controller.MemberController;
 import chap19.member.controller.MemberControllerImpl;
 import chap19.member.window.RegMemDialog;
+import chap19.member.window.SearchMemDialog;
 
 public class RentMainWindow extends AbstractBaseWindow { // JFram기능을 가진 추상클래스 상속받기
 	
@@ -119,7 +120,7 @@ public class RentMainWindow extends AbstractBaseWindow { // JFram기능을 가�
 		
 		// 메뉴항목 이벤트 리스너 등록
 		memMenu21.addActionListener(new MemberHandler());
-//		memMenu22.addActionListener(new MemberHandler());
+		memMenu22.addActionListener(new MemberHandler());
 //		memMenu23.addActionListener(new MemberHandler());
 //		memMenu24.addActionListener(new MemberHandler());
 		
@@ -155,7 +156,7 @@ public class RentMainWindow extends AbstractBaseWindow { // JFram기능을 가�
 				if (e.getSource() == memMenu21) {
 					new RegMemDialog(memberController, "회원 등록창");
 				} else if (e.getSource() == memMenu22) {
-					
+					new SearchMemDialog(memberController, "회원 조회창");
 				} else if (e.getSource() == memMenu23) {
 					
 				}else if (e.getSource() == memMenu24) {
