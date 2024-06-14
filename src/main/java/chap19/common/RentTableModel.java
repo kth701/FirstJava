@@ -8,6 +8,13 @@ public class RentTableModel extends AbstractTableModel {
 	String[] columnNames;
 	boolean[] columnEditables = new boolean[] { false, true, true, true, true, true};
 
+	// 생성자 
+	public RentTableModel(Object[][] data, String[] columnNames ) {
+		this.data = data;
+		this.columnNames = columnNames;
+	}
+	
+	
 	@Override
 	public int getRowCount() {
 		// 테이블의 행의 수를 지정
