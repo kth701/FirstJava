@@ -170,16 +170,17 @@ public class ExcuteAppTest {
 		
 		List<ResVO> listResInfo = new ArrayList<ResVO>();
 		listResInfo = resController.listResInfo(listVO);
+		
 		listResInfo.forEach( resInfo -> {
-			MemberController memberController = new MemberControllerImpl();
-			MemberVO memverVO = MemberVO.builder()
-									.memId(resInfo.getResNumber())
-									.build();
 			
-			System.out.println("----");
+			MemberController memberController = new MemberControllerImpl();
+			
+			System.out.println("--- 렌트카 예약 조회 List");
 			System.out.println("예약자:"+resInfo.getResUserId());
-			List<MemberVO> members = memberController.listMember(memverVO);
-			members.forEach(System.out::println);
+			MemberVO member = memberController.checkId(resInfo.getResUserId());
+			System.out.println("예약자 이름: "+member.getMemName());
+			System.out.println("예약자 전화번호: "+member.getMemPhoneNum());
+			System.out.println("예약자 주소: "+member.getMemAddress());
 			System.out.println("------");
 			
 			System.out.println("차번호:"+resInfo.getResCarNumber());
