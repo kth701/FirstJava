@@ -30,6 +30,8 @@ public class ThreadTest01 {
 		Thread t3 = new Thread(r );
 		
 		t3.setName("인터페이스 스레드");
+//		t3.setPriority(Thread.MAX_PRIORITY);
+		t3.setDaemon(true);//  데몬 스레드로 설정(메인 스레드 종료하면 현재 스레드종료)
 		t3.start();
 		
 
@@ -37,6 +39,7 @@ public class ThreadTest01 {
 		System.out.println("===> "+t2.getName()+": 우선순위 ->"+t2.getPriority());
 		System.out.println("===> "+t3.getName()+": 우선순위 ->"+t3.getPriority());
 
+		System.out.println("==> 메인스레드 마지막부분:"+currThread.getName());
 		
 		
 		
@@ -54,7 +57,7 @@ class MyThread01 extends Thread{
 			System.out.println("현재 실행중인 스레드:"+Thread.activeCount());
 			
 			try {
-				Thread.sleep(1);
+				Thread.sleep(100);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -69,7 +72,7 @@ class MyThread02 extends Thread{
 		for (int i=100; i<200; i++) {
 			System.out.println(i+"-> "+Thread.currentThread());
 			try {
-				Thread.sleep(1);
+				Thread.sleep(100);
 			} catch (InterruptedException e) {e.printStackTrace();}
 		}
 		
@@ -85,7 +88,7 @@ class RunnableImpl  implements Runnable{
 			System.out.println(i+"-> "+Thread.currentThread());
 			System.out.println("현재 실행중인 스레드:"+Thread.activeCount());
 			try {
-				Thread.sleep(1);
+				Thread.sleep(100);
 			} catch (InterruptedException e) {e.printStackTrace();}
 		}
 	}
@@ -99,6 +102,10 @@ class RunnableImpl  implements Runnable{
  *  스레드(Thread): 실행 중인 프로그램은 프로세서 내에서 또 다시 세부 실행 단위
  *  멀티 태스킹: CPU가 여러 개의 스레드를 동시에 실행하는 것
  *  멀티 프로세싱: 여러 개의 CPU(멀티코어)가 여러 개의 스레드를 동시에 실해하는 것
+ *  
+ *  데몬(Daemon) 스레드 : 스레드들 중에 메인 스레드가 종료하면 동시에 종료되는 스레드
  * 
+ * 
+
  */
 
