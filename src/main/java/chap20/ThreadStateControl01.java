@@ -49,11 +49,12 @@ public class ThreadStateControl01 {
 			t.join();// 대기 스레드가 실행을 완전히 종료 후, 다시 실행
 		} catch (InterruptedException e) {}
 		System.out.println("-- 메인 메서드 종료");
-		*/
+		
 		
 		
 		// interrupt(): 스레드는 run()메서드를 모두 실행되면 자동으로 종료되는 형태
 		// 				스레드 실행중에 반드시 종료해야 할 경우 가 발생할 경우 적용
+		/*
 		VideoThread videoThread = new VideoThread();
 		
 		videoThread.start();
@@ -68,6 +69,7 @@ public class ThreadStateControl01 {
 		System.out.println("videoThread상태: "+videoThread.getState());
 		
 		System.out.println("메인 스레드 종료");
+		*/
 
 	}
 
