@@ -54,14 +54,33 @@ public class ChatServerThread extends Thread {
 					throw new IOException();
 				}
 				
+				// 현재 클라이언트 접속자의 메시지를 인자로 전달
 				sendMessageAll(message);
 			}
 		} catch (Exception e) {	// TODO: handle exception
 		}
 	}
 	
-	public void sendMessageAll(String message) {
+	public void sendMessageAll(String message) throws Exception {
 		
+		ChatServerThread thread = null;
+		for (int i=0; i< threads.size(); i++) {
+			thread = threads.get(i);
+			if (thread.isAlive()) { // 해당 스레드의 run()메서드가 종료됐는지 확인
+				thread.sendMessage(message);
+			}
+		}
+		
+		// 서버 콘솔로 출력
+		System.out.println(message);
+		
+	}
+	
+	public void sendMessage(String message) throws Exception {
+		writer = new PrintWriter(
+					new BufferedWriter(
+							new OutputStreamWriter(socket.getOutputStream())), true);
+		writer.print(message);
 	}
 
 }
