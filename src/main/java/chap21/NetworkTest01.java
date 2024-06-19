@@ -46,7 +46,6 @@ public class NetworkTest01 {
 		System.out.println("getFile:"+url.getFile());
 		System.out.println("getQuery:"+url.getQuery());
 		
-		
 
 	}
 
