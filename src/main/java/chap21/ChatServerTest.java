@@ -1,21 +1,27 @@
 package chap21;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.OutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Scanner;
+
+import javax.swing.InputMap;
 
 public class ChatServerTest {
 
 	public static void main(String[] args) {
-		// 채팅 서버 프로그램
 		
+		// 채팅 서버 프로그램
 		ServerSocket serverSocket = null;
 		Socket socket = null;
+		
+		ChatServerThread thread;
+
+		/*
 		
 //		InputStream is = null;
 		OutputStream os = null;
@@ -31,13 +37,31 @@ public class ChatServerTest {
 		
 		Scanner sc = new Scanner(System.in);
 		
-	
+		 */	
+		
 		try {
+			
 			serverSocket = new ServerSocket(8888);
-			System.out.println("서버 실행 중...");
+			System.out.println("접속 대기 중....");
 			
-			socket = serverSocket.accept();
+			while(true) {	
+				socket = serverSocket.accept();
+					
+				// 클라이언트로 부터 넘어온 메시지(닉네임) 읽기
+				InputStream is = socket.getInputStream();
+				BufferedReader br = new BufferedReader(new InputStreamReader(is));
+				String nickName = br.readLine();
+				
+				System.out.println("접속IP: "+ socket.getInetAddress());
+				System.out.println("접속자: "+ nickName);
+				
+				thread = new ChatServerThread(socket, nickName);	
+				thread.start();
 			
+			}
+			
+			
+			/*
 			//is = socket.getInputStream();
 			
 			// 수신 문자 콘솔에 출력
@@ -77,7 +101,7 @@ public class ChatServerTest {
 			sc.close();
 			writer.close();
 			socket.close();
-		
+		*/
 			
 		} catch (Exception e) {}
 		

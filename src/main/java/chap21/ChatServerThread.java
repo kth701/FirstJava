@@ -50,13 +50,15 @@ public class ChatServerThread extends Thread {
 			while(true) {
 				br = new BufferedReader(new InputStreamReader(is));
 				message = br.readLine();
+				
+				// 소켓으로 부터 더이상 읽어올 메시지가 없으면 예외처리하여 while빠져나옴
 				if (message == null) {
 					throw new IOException();
 				}
 				
 				// 현재 클라이언트 접속자의 메시지를 인자로 전달
 				sendMessageAll(message);
-			}
+			}// end run()
 		} catch (Exception e) {	// TODO: handle exception
 		}
 	}
