@@ -28,12 +28,14 @@ public class ChatClientTest {
 		
 		try {
 			//socket = new Socket("localhost", 8888);
-			//socket = new Socket("127.0.0.1", 8888);
-			
+//			socket = new Socket("127.0.0.1", 8888);
 			socket = new Socket("192.168.0.12", 8888);
+			if (socket != null)
+				System.out.println("서버 접속 성공");
+			
 			is =  socket.getInputStream();
 			os = socket.getOutputStream();
-			
+
 			Scanner sc = new Scanner(System.in);
 			
 			// 송수신에 사용 할 입출력 버퍼
@@ -51,7 +53,7 @@ public class ChatClientTest {
 					break;
 				}
 				
-				writer.print("클라이언트:"+outMessage);
+				writer.println("클라이언트:"+outMessage);
 			}
 			
 			sc.close();writer.close();socket.close();
