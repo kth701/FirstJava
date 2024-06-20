@@ -17,12 +17,12 @@ public class PublicDataTest {
 
 	public static void main(String[] args) throws Exception {
 		// 서울시 문화재 공공데이터 API구현하기
-		// key : 68516b446268706836355859677a62
+
 		
-		URL url = new URL("http://openapi.seoul.go.kr:8088/68516b446268706836355859677a62/xml/SebcHeritageInfoEng/1/5/");
+		URL url = new URL("http://openapi.seoul.go.kr:8088/개인인증키/xml/SebcHeritageInfoEng/1/5/");
 		InputStream stream = url.openStream();
 		
-		char ch = 0;
+
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 		Document doc = dBuilder.parse(stream);
