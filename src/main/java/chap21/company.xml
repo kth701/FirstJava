@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<company>
+	<emp>
+		<firstname>길동</firstname>
+		<lastname>홍</lastname>
+		<nickname>날쌘돌이</nickname>
+		<salary>100</salary>
+		<car size="1800">길동차</car>
+	</emp>
+	<emp>
+		<firstname>순이</firstname>
+		<lastname>동</lastname>
+		<nickname>곰탱이</nickname>
+		<salary>200</salary>
+		<car size="2000">내차</car>
+	</emp>
+</company>

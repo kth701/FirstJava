@@ -40,10 +40,10 @@ public class PublicDataTest {
 				Element eElement = (Element)nNode;
 				
 				System.out.println("----------------------------");
-				System.out.println("문화재 키값: "+ getTageValue("MAIN_KEY", eElement));
-				System.out.println("문화재 일련번호: "+ getTageValue("MNG_NO", eElement));
-				System.out.println("문화재 명칭: "+ getTageValue("NAME_ENG", eElement));
-				System.out.println("문화재 수량 규모: "+ getTageValue("QUANTITY_SCALE", eElement));
+				System.out.println("문화재 키값: "+ getTagValue("MAIN_KEY", eElement));
+				System.out.println("문화재 일련번호: "+ getTagValue("MNG_NO", eElement));
+				System.out.println("문화재 명칭: "+ getTagValue("NAME_ENG", eElement));
+				System.out.println("문화재 수량 규모: "+ getTagValue("QUANTITY_SCALE", eElement));
 				
 			}
 		
@@ -51,11 +51,11 @@ public class PublicDataTest {
 
 	}
 	
-	private static String getTageValue(String sTag, Element eElement) {
+	private static String getTagValue(String sTag, Element eElement) {
 		NodeList nList = eElement.getElementsByTagName(sTag).item(0).getChildNodes();
 		Node nValue = (Node) nList.item(0);
 		
-		if (nValue == null) return "1";// 문화재 수량이 없는 경우 "1"로 설정하영 반환
+		if (nValue == null) return "1";// 문화재 수량이 없는 경우 "1"로 설정하여 반환
 		return nValue.getNodeValue();
 	}
 
